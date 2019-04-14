@@ -2,7 +2,7 @@
 A collection of useful Praat scripts
 
 ## Installation
-Download the plugin_PraatZee folder and place it in your Praat preferences folder.
+Download the `plugin_PraatZee` folder and place it in your Praat preferences folder.
 - macOS: `/Users/UserName/Library/Preferences/Praat Prefs/`
 - Linux: `/UserName/.praat-dir/`
 - Windows: `C:\Users\UserName\Praat\`
