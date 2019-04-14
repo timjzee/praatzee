@@ -6,7 +6,7 @@ object_name$ = right$(full_name$, length(full_name$) - us_i)
 beginPause: "Hi"
     real: "Part start", 'full_name$'.xmin
     real: "Part end", 'full_name$'.xmax
-    boolean: "Adjust pitch ceiling", 0
+    boolean: "Adjust pitch ceiling", 1
 endPause: "Continue", 1
 
 start_frame = Get frame number from time: part_start
