@@ -1,13 +1,20 @@
+form Extract part
+    real Part_start 0 (= from beginning)
+    real Part_end 0 (= to end)
+    boolean Adjust_pitch_ceiling 1
+endform
+
 full_name$ = replace$(selected$(), " ", "_", 0)
 us_i = index(full_name$, "_")
 object_type$ = left$(full_name$, us_i - 1)
 object_name$ = right$(full_name$, length(full_name$) - us_i)
 
-beginPause: "Hi"
-    real: "Part start", 'full_name$'.xmin
-    real: "Part end", 'full_name$'.xmax
-    boolean: "Adjust pitch ceiling", 1
-endPause: "Continue", 1
+if part_start == 0
+    part_start = 'full_name$'.xmin
+endif
+if part_end == 0
+    part_end = 'full_name$'.xmax
+endif
 
 start_frame = Get frame number from time: part_start
 if start_frame <= 0
