@@ -1,2 +1,7 @@
 Add action command: "Pitch", 1, "", 0, "", 0, "Extract part...", "", 0, "extractPeriodicity.praat"
 Add action command: "Harmonicity", 1, "", 0, "", 0, "Extract part...", "", 0, "extractPeriodicity.praat"
+Add action command: "Sound", 1, "", 0, "", 0, "Insert silence...", "", 0, "insertSilence.praat"
+Add action command: "TextGrid", 1, "", 0, "", 0, "Insert silence...", "", 0, "insertSilence.praat"
+Add action command: "PointProcess", 1, "", 0, "", 0, "Insert silence...", "", 0, "insertSilence.praat"
+Add action command: "PitchTier", 1, "", 0, "", 0, "Insert silence...", "", 0, "insertSilence.praat"
+Add action command: "Manipulation", 1, "", 0, "", 0, "Insert silence...", "", 0, "insertSilence.praat"
