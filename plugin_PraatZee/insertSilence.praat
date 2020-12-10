@@ -48,71 +48,8 @@ procedure addSilenceSound
         endif
         breath_dur = Get total duration
         new_breath_ratio = .new_sil_dur / breath_dur
-#         if new_breath_ratio > 0.6667 and new_breath_ratio < 1.5
-#             Scale times to: 0, .new_sil_dur
-#             Rename: object_name$ + "_part2"
-#         elsif new_breath_ratio <= 0.6667
-#             Extract part for overlap: 0, 0.1667 * breath_dur + overlap/2, overlap
-#             Rename: breath_name$ + "1"
-#             selectObject: "Sound " + breath_name$
-#             Extract part for overlap: 0.8333 * breath_dur - overlap/2, breath_dur, overlap
-#             Rename: breath_name$ + "2"
-#             selectObject: "Sound " + breath_name$ + "1"
-#             plusObject: "Sound " + breath_name$ + "2"
-#             Concatenate with overlap: overlap
-#             Rename: object_name$ + "_part2"
-#             Scale times to: 0, .new_sil_dur
-#         elsif new_breath_ratio >= 1.5
-#             missing_dur = .new_sil_dur - breath_dur
-#             parts = 12
-#             breath_part = (1 / parts) * breath_dur
-#             # hoe vaak gaat de middelste 10% daarin?
-#             n_parts = missing_dur div breath_part
-#             if n_parts > ((parts / 2) - 3)
-#                 n_parts = ((parts / 2) - 3)
-#             endif
-#             end_t = 0
-# #            if (5 + n_parts) > 8
-#                 # if the interweaving crosses the center
-# #                n_parts = n_parts + 2
-# #            endif
-#             for n from 1 to n_parts
-#                 selectObject: "Sound " + breath_name$
-#                 start_t = end_t
-#                 end_t = ((parts/4) + n) * breath_part
-#                 Extract part for overlap: start_t, end_t + overlap/2, overlap
-#                 Rename: breath_name$ + string$(n) + "orig"
-# #                if (5 + n) > 10 or (5 + n) < 9
-#                 selectObject: "Sound " + breath_name$
-#                 Extract part for overlap: ((parts/4) + n) * breath_part, ((parts/4) + 1 + n) * breath_part + overlap/2, overlap
-#                 Rename: breath_name$ + string$(n) + "center"
-#                 endif
-#             endfor
-#             selectObject: "Sound " + breath_name$
-#             Extract part for overlap: end_t, breath_dur, overlap
-#             Rename: breath_name$ + "end"
-#             selectObject: "Sound " + breath_name$ + "1orig"
-#             for n from 1 to n_parts
-#                 plusObject: "Sound " + breath_name$ + string$(n) + "orig"
-# #                if (5 + n) > 10 or (5 + n) < 9
-#                 plusObject: "Sound " + breath_name$ + string$(n) + "center"
-#                 endif
-#             endfor
-#             plusObject: "Sound " + breath_name$ + "end"
-#             Concatenate with overlap: overlap
-#             Rename: object_name$ + "_part2"
-#             Scale times to: 0, .new_sil_dur
-#             for n from 1 to n_parts
-#                 removeObject: "Sound " + breath_name$ + string$(n) + "orig"
-# #                if (5 + n) > 10 or (5 + n) < 9
-#                 removeObject: "Sound " + breath_name$ + string$(n) + "center"
-#                 endif
-#             endfor
-#             removeObject: "Sound " + breath_name$ + "end"
-#         endif
         Lengthen (overlap-add): 75, 600, new_breath_ratio
         Rename: object_name$ + "_part2"
-#        selectObject: "Sound " + object_name$ + "_part2"
         breath_sampling_freq = Get sampling frequency
         if breath_sampling_freq != .sampling_freq
             Resample: .sampling_freq, 50
@@ -120,6 +57,7 @@ procedure addSilenceSound
             selectObject: "Sound " + object_name$ + "_part2" + "_" + string$(.sampling_freq)
             Rename: object_name$ + "_part2"
         endif
+        removeObject: "Sound " + breath_name$
     endif
     if insertion_time < object_end
         selectObject: "Sound " + object_name$
